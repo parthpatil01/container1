@@ -45,7 +45,7 @@ app.post('/calculate', async (req, res) => {
         const response = await axios.post('http://container2-service:5001/calculate', { file, product });
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ file, error: error.message });
+        res.status(500).json({ file, error });
     }
 });
 
