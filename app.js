@@ -40,9 +40,6 @@ app.post('/calculate', async (req, res) => {
         return res.status(404).json({ file, error: 'File not found.' });
     }
 
-    console.log("latest update container1");
-
-
     try {
         // Send request to Container 2
         const response = await axios.post('http://container2-service:5001/calculate', { file, product });
