@@ -45,7 +45,14 @@ app.post('/calculate', async (req, res) => {
         const response = await axios.post('http://container2-service:5001/calculate', { file, product });
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ file, error: error.message });
+        // Check if the error has a response from the server
+        if (error.response) {
+            // Server responded with an error status
+            return res.status(error.response.status).json(error.response.data);
+        } else {
+            // Connection error or other issues
+            return res.status(500).json({ file, error: 'Internal server error: ' + error.message });
+        }
     }
 });
 
