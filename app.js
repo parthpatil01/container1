@@ -34,6 +34,8 @@ app.post('/calculate', async (req, res) => {
         return res.status(400).json({ file: null, error: 'Invalid JSON input.' });
     }
 
+    // cloud build demonstration
+    
     const filePath = path.join(PV_DIR, file);
 
     if (!fs.existsSync(filePath)) {
