@@ -34,14 +34,14 @@ app.post('/calculate', async (req, res) => {
         return res.status(400).json({ file: null, error: 'Invalid JSON input.' });
     }
 
-    // cloud build demonstration
-    
     const filePath = path.join(PV_DIR, file);
 
     if (!fs.existsSync(filePath)) {
         return res.status(404).json({ file, error: 'File not found.' });
     }
 
+    // demonstration if ci/cd cloud build
+    
     try {
         // Send request to Container 2
         const response = await axios.post('http://container2-service:5001/calculate', { file, product });
