@@ -26,6 +26,8 @@ app.post('/store-file', (req, res) => {
     });
 });
 
+// demostration of ci/cd cloud build
+
 // Endpoint to calculate product total
 app.post('/calculate', async (req, res) => {
     const { file, product } = req.body;
